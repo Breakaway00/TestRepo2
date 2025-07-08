@@ -134,6 +134,9 @@ def plot_court_heatmap(selected_year, selected_groupby, selected_court, graph_he
     colormap_max_df = data["colormap_max_df"]
     year_key = selected_year_str if selected_year_str in colormap_max_df["Year"].astype(str).values else "All"
     vmax_row = colormap_max_df[colormap_max_df["Year"].astype(str) == year_key].iloc[0]
+    vmax_col = df_name.replace("_df", "") + f"_{selected_groupby}"
+    vmax_value = vmax_row[vmax_col]
+
 
 
     # ---- Plot ----
