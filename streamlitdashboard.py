@@ -61,7 +61,7 @@ data = load_data()
 # ---- UI Controls (Streamlit widgets) ----
 st.sidebar.header("Controls")
 
-cell_totals = st.sidebar.selectbox("Cell Totals", ["On", "Off"], index=1)
+cell_totals = st.sidebar.checkbox("Show Cell Totals?", value=False)
 graph_height = st.sidebar.slider("Graph Height", min_value=8, max_value=20, value=10)
 graph_width = st.sidebar.slider("Graph Width", min_value=8, max_value=20, value=10)
 
@@ -161,7 +161,7 @@ def plot_court_heatmap(selected_year, selected_groupby, selected_court, graph_he
     colorbar.ax.yaxis.label.set_color("white")
     colorbar.ax.tick_params(colors="white")
 
-    if cell_totals == "On":
+    if cell_totals:
         vmin, vmax = heatmap.get_children()[0].get_clim()
         for y in range(heatmap_data.shape[0]):
             for x in range(heatmap_data.shape[1]):
